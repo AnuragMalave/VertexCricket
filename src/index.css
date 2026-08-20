@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Barlow Condensed', 'Teko', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.font-display {
+  font-family: 'Barlow Condensed', 'Teko', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-heading {
+  font-family: 'Barlow Condensed', 'Teko', sans-serif;
+}
+
+.font-signature {
+  font-family: 'Caveat', cursive;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1B2D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DC2626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B91C1C;
+}
+
+/* Diagonal clip paths for hero design */
+.clip-v-bg {
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.clip-hero-v {
+  clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* Custom animation effects */
+@keyframes floatSlow {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Metallic and glossy hover states */
+.btn-primary {
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-navy {
+  background: linear-gradient(135deg, #0B1B2D 0%, #172A45 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-navy:hover {
+  background: linear-gradient(135deg, #172A45 0%, #203A60 100%);
+  box-shadow: 0 10px 25px -5px rgba(11, 27, 45, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Grid pattern background */
+.bg-grid-dots {
+  background-image: radial-gradient(rgba(220, 38, 38, 0.15) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+.bg-grid-dots-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
