@@ -7,13 +7,13 @@ interface BottomCTAProps {
 
 export const BottomCTA: React.FC<BottomCTAProps> = ({ onOpenEnroll }) => {
   return (
-    <section className="relative py-16 sm:py-20 overflow-hidden bg-[#07111E] text-white border-t border-slate-800">
+    <section className="relative py-16 sm:py-18 overflow-hidden bg-[#07111E] text-white border-t border-slate-800">
       {/* Background Stadium Photo Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src="/images/bottom-cta-bg.jpg"
           alt="Stadium background"
-          className="w-full h-full object-cover opacity-35 mix-blend-luminosity"
+          className="w-full h-full object-cover opacity-45 mix-blend-luminosity"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#07111E] via-[#07111E]/80 to-[#07111E]/90 pointer-events-none" />
       </div>
@@ -35,7 +35,7 @@ export const BottomCTA: React.FC<BottomCTAProps> = ({ onOpenEnroll }) => {
           <div className="flex-shrink-0">
             <button
               onClick={onOpenEnroll}
-              className="btn-primary text-white px-8 py-4 rounded-none font-semibold font-inter text-xs sm:text-sm tracking-wider uppercase flex items-center gap-3 shadow-2xl cursor-pointer group"
+              className="btn-primary text-white px-8 py-4 rounded-md font-semibold font-inter text-xs sm:text-sm tracking-wider uppercase flex items-center gap-3 shadow-2xl cursor-pointer group"
             >
               <span>ENROLL NOW</span>
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />

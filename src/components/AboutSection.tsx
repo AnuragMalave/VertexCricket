@@ -60,7 +60,7 @@ export const AboutSection: React.FC = () => {
                   <NetFacilityIcon className="w-6 h-6" />
                 </div>
                 <h3 className="font-display font-semibold text-lg tracking-normal uppercase text-white">
-                  MODERN FACILITIES
+                  TOP QUALITY INDOOR FACILITIES
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-inter font-normal">
                   Train in state-of-the-art nets, turf pitches & fitness zones.

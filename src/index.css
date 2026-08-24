@@ -92,13 +92,13 @@
 
 /* Metallic and glossy hover states */
 .btn-primary {
-  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  background: linear-gradient(135deg, #053E58 0%, #032A3C 100%);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.4);
+  background: linear-gradient(135deg, #075274 0%, #053E58 100%);
+  box-shadow: 0 10px 25px -5px rgba(5, 62, 88, 0.4);
   transform: translateY(-2px);
 }
 

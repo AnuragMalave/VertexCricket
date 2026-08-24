@@ -13,9 +13,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
 
   const navLinks = [
     { id: 'home', label: 'HOME', href: '#home' },
-    { id: 'about', label: 'ABOUT', href: '#about' },
+    { id: 'about', label: 'ABOUT', href: '#meet-coach' },
     { id: 'programs', label: 'PROGRAMS', href: '#programs' },
-    { id: 'coaches', label: 'COACHES', href: '#coaches' },
+    // { id: 'coaches', label: 'COACHES', href: '#coaches' },
     { id: 'facilities', label: 'FACILITIES', href: '#facilities' },
     { id: 'why-us', label: 'WHY US', href: '#why-us' },
     { id: 'contact', label: 'CONTACT', href: '#contact' },
@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
         ? 'bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-100'
-        : 'bg-white py-4 border-b border-slate-100'
+        : 'bg-white py-3 border-b border-slate-100'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => onOpenEnroll()}
-              className="relative group overflow-hidden bg-[#DC2626] hover:bg-[#B91C1C] text-white px-6 py-2.5 rounded-md font-semibold text-xs font-inter uppercase tracking-wider transition-all shadow-sm hover:shadow-red-500/25 flex items-center gap-1.5 cursor-pointer"
+              className="relative group overflow-hidden bg-[#053E58] hover:bg-[#032A3C] text-white px-6 py-2.5 rounded-md font-semibold text-xs font-inter uppercase tracking-wider transition-all shadow-sm hover:shadow-[#053E58]/25 flex items-center gap-1.5 cursor-pointer"
             >
               <span className="relative z-10">ENROLL NOW</span>
             </button>
@@ -77,7 +77,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-[#DC2626] hover:bg-slate-100 focus:outline-none"
+              className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-[#053E58] hover:bg-slate-100 focus:outline-none"
               aria-label="Toggle navigation"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -99,12 +99,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
                   setMobileMenuOpen(false);
                 }}
                 className={`px-3 py-2 rounded-lg text-sm font-bold tracking-wider flex items-center justify-between transition-colors ${activeTab === link.id
-                  ? 'bg-red-50 text-[#DC2626] font-extrabold'
+                  ? 'bg-blue-50 text-[#053E58] font-extrabold'
                   : 'text-slate-700 hover:bg-slate-50'
                   }`}
               >
                 <span>{link.label}</span>
-                {activeTab === link.id && <span className="w-2 h-2 rounded-full bg-[#DC2626]" />}
+                {activeTab === link.id && <span className="w-2 h-2 rounded-full bg-[#053E58]" />}
               </a>
             ))}
 
@@ -114,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
                   setMobileMenuOpen(false);
                   onOpenEnroll();
                 }}
-                className="w-full py-3 bg-[#DC2626] text-white font-bold rounded-lg text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[#053E58] text-white font-bold rounded-lg text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2"
               >
                 ENROLL NOW <ArrowRight className="w-4 h-4" />
               </button>

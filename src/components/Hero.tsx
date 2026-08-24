@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Play, Users, ShieldCheck, Trophy } from 'lucide-react';
+import heroBg from '../assets/herobackground.svg';
 
 interface HeroProps {
   onOpenEnroll: () => void;
@@ -12,8 +13,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnroll, onOpenVideo }) => {
       {/* Full Section Background Image */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img
-          src="/images/4k.svg"
-          alt="Vertex Cricket Academy Hero Background 4K"
+          src={heroBg}
+          alt="Vertex Cricket Academy Hero Background"
           className="w-full h-full object-cover object-right sm:object-center lg:object-right"
         />
         {/* Subtle Gradient Fade for Mobile Responsiveness on Left Text */}
@@ -34,7 +35,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnroll, onOpenVideo }) => {
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display uppercase leading-none">
-              <span className="block text-[#0B1B2D]">TRAIN HARD.</span>
+              <span className="block text-[#053E58]">TRAIN HARD.</span>
               <span className="block text-[#DC2626]">PLAY FEARLESS.</span>
             </h1>
 

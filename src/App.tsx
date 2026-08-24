@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { AboutSection } from './components/AboutSection';
+import { MeetCoachSection } from './components/MeetCoachSection';
+// import { AboutSection } from './components/AboutSection';
 import { ProgramsSection } from './components/ProgramsSection';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { ImpactSection } from './components/ImpactSection';
-import { CoachesSection } from './components/CoachesSection';
+// import { CoachesSection } from './components/CoachesSection';
 import { FacilitiesSection } from './components/FacilitiesSection';
 import { BottomCTA } from './components/BottomCTA';
 import { Footer } from './components/Footer';
@@ -40,7 +41,9 @@ export function App() {
           onOpenVideo={() => setIsVideoOpen(true)} 
         />
 
-        <AboutSection />
+        <MeetCoachSection />
+
+        {/* <AboutSection /> */}
 
         <ProgramsSection 
           onSelectProgramKey={(key) => setSelectedProgramKey(key)}
@@ -51,7 +54,7 @@ export function App() {
 
         <ImpactSection />
 
-        <CoachesSection />
+        {/* <CoachesSection /> */}
 
         <FacilitiesSection />
 

@@ -55,7 +55,7 @@ export const ImpactSection: React.FC = () => {
               <span className="text-amber-600 font-semibold text-xs tracking-[0.2em] uppercase font-inter block mb-3">
                 OUR IMPACT
               </span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display uppercase leading-tight text-[#0B1B2D]">
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display uppercase leading-tight text-[#053E58]">
                 NUMBERS THAT SPEAK SUCCESS
               </h2>
             </div>

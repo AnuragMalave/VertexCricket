@@ -11,7 +11,7 @@ export const Logo: React.FC<LogoProps> = ({ className = '', light = false }) => 
       <img
         src="/images/logo.png"
         alt="Vertex Cricket Academy"
-        className={`h-11 sm:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${
+        className={`h-14 sm:h-18 w-auto object-contain transition-transform duration-300 group-hover:scale-105 ${
           light ? 'brightness-0 invert' : ''
         }`}
       />

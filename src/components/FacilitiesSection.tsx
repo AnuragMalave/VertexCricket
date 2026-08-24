@@ -43,11 +43,11 @@ export const FacilitiesSection: React.FC = () => {
   const current = facilities[activeFacility];
 
   return (
-    <section id="facilities" className="py-20 lg:py-28 bg-[#0B1B2D] text-white relative overflow-hidden">
+    <section id="facilities" className="py-20 lg:py-16 bg-[#0B1B2D] text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-slate-800 pb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-slate-800 pb-4">
           <div>
             <span className="text-amber-500 font-semibold text-xs tracking-[0.2em] uppercase font-inter block mb-3">
               WORLD-CLASS INFRASTRUCTURE
@@ -59,14 +59,14 @@ export const FacilitiesSection: React.FC = () => {
         </div>
 
         {/* Tab Buttons Row */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-4 scrollbar-none">
           {facilities.map((fac, idx) => (
             <button
               key={fac.id}
               onClick={() => setActiveFeature(idx)}
               className={`px-5 py-3 rounded-xl font-semibold font-inter text-xs uppercase tracking-wider whitespace-nowrap transition-all flex items-center gap-2 border cursor-pointer ${activeFacility === idx
-                  ? 'bg-[#DC2626] text-white border-[#DC2626] shadow-lg shadow-red-900/30'
-                  : 'bg-slate-800/60 text-slate-300 border-slate-700/80 hover:bg-slate-800 hover:text-white'
+                ? 'bg-[#DC2626] text-white border-[#DC2626] shadow-lg shadow-red-900/30'
+                : 'bg-slate-800/60 text-slate-300 border-slate-700/80 hover:bg-slate-800 hover:text-white'
                 }`}
             >
               <NetFacilityIcon className="w-4 h-4" />

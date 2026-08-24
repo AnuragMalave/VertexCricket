@@ -17,7 +17,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
     parentName: '',
     program: defaultProgram,
     role: 'Batsman',
-    batchTime: 'Morning (6:00 AM - 8:30 AM)',
+    batchTime: 'Evening Batch (Mon to Fri, 5:00 PM - 7:00 PM)',
     experienceLevel: 'Beginner / First Time',
     notes: '',
   });
@@ -53,8 +53,8 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
               V
             </div>
             <div>
-              <h3 className="font-display text-lg tracking-normal uppercase font-semibold">Academy Enrollment</h3>
-              <p className="text-xs font-inter text-slate-400 font-normal">Vertex Cricket Academy • Admissions 2025</p>
+              <h3 className="font-display text-xl tracking-wider uppercase font-extrabold">Academy Enrollment</h3>
+              <p className="text-xs font-inter text-slate-400 font-normal">Vertex Cricket Academy • Admissions 2026</p>
             </div>
           </div>
           <button
@@ -76,7 +76,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
               <span className="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full border border-emerald-200">
                 Enrollment Request Received
               </span>
-              <h2 className="text-2xl font-bold font-heading text-[#0B1B2D]">WELCOME TO VERTEX ACADEMY!</h2>
+              <h2 className="text-2xl font-extrabold font-display tracking-tight text-[#0B1B2D]">WELCOME TO VERTEX ACADEMY!</h2>
               <p className="text-slate-600 text-sm max-w-md mx-auto">
                 Thank you <span className="font-semibold text-slate-800">{formData.fullName}</span>! Your enrollment application has been logged under ID <span className="font-mono font-bold text-[#DC2626]">{enrollmentId}</span>.
               </p>
@@ -110,7 +110,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
 
             <button
               onClick={resetAndClose}
-              className="w-full py-3 bg-[#0B1B2D] text-white rounded-xl font-bold hover:bg-slate-800 transition-all text-sm uppercase tracking-wider shadow-md"
+              className="w-full py-3 bg-[#0B1B2D] text-white rounded-xl font-display font-bold hover:bg-slate-800 transition-all text-sm uppercase tracking-wider shadow-md"
             >
               Done & Return to Homepage
             </button>
@@ -139,7 +139,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
             <div className="p-6 space-y-4 flex-1">
               {step === 1 && (
                 <div className="space-y-4 animate-fadeIn">
-                  <h4 className="font-heading text-lg text-[#0B1B2D] border-b pb-2 flex items-center gap-2">
+                  <h4 className="font-display font-bold text-lg text-[#0B1B2D] border-b pb-2 uppercase tracking-wide flex items-center gap-2">
                     <User className="w-5 h-5 text-[#DC2626]" /> Player & Contact Information
                   </h4>
 
@@ -221,7 +221,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
 
               {step === 2 && (
                 <div className="space-y-4 animate-fadeIn">
-                  <h4 className="font-heading text-lg text-[#0B1B2D] border-b pb-2 flex items-center gap-2">
+                  <h4 className="font-display font-bold text-lg text-[#0B1B2D] border-b pb-2 uppercase tracking-wide flex items-center gap-2">
                     <Award className="w-5 h-5 text-[#DC2626]" /> Program & Training Preferences
                   </h4>
 
@@ -237,8 +237,8 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
                           key={item.title}
                           onClick={() => setFormData({ ...formData, program: item.title })}
                           className={`p-3 rounded-xl border-2 cursor-pointer transition-all ${formData.program === item.title
-                              ? 'border-[#DC2626] bg-red-50/50 shadow-sm'
-                              : 'border-slate-200 hover:border-slate-300'
+                            ? 'border-[#DC2626] bg-red-50/50 shadow-sm'
+                            : 'border-slate-200 hover:border-slate-300'
                             }`}
                         >
                           <div className="flex items-center justify-between mb-1">
@@ -258,10 +258,8 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
                       value={formData.batchTime}
                       onChange={(e) => setFormData({ ...formData, batchTime: e.target.value })}
                     >
-                      <option>Morning Batch (6:00 AM - 8:30 AM)</option>
-                      <option>Evening Batch (4:00 PM - 6:30 PM)</option>
-                      <option>Weekend Intensive (Sat & Sun 7:00 AM - 10:30 AM)</option>
-                      <option>High Performance Night Nets (7:00 PM - 9:00 PM)</option>
+                      <option>Evening Batch (Mon to Fri, 5:00 PM - 7:00 PM)</option>
+                      <option>Weekend Intensive (Sat & Sun 7:00 AM - 10:00 AM)</option>
                     </select>
                   </div>
 
@@ -274,8 +272,8 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
                           type="button"
                           onClick={() => setFormData({ ...formData, role })}
                           className={`py-2 px-1 text-xs font-semibold rounded-lg border text-center transition-all ${formData.role === role
-                              ? 'bg-[#0B1B2D] text-white border-[#0B1B2D]'
-                              : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                            ? 'bg-[#0B1B2D] text-white border-[#0B1B2D]'
+                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                             }`}
                         >
                           {role}
@@ -288,7 +286,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
 
               {step === 3 && (
                 <div className="space-y-4 animate-fadeIn">
-                  <h4 className="font-heading text-lg text-[#0B1B2D] border-b pb-2 flex items-center gap-2">
+                  <h4 className="font-display font-bold text-lg text-[#0B1B2D] border-b pb-2 uppercase tracking-wide flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-[#DC2626]" /> Summary & Additional Notes
                   </h4>
 

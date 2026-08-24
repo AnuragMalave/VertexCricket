@@ -39,11 +39,11 @@ export const WhyChooseUs: React.FC = () => {
   return (
     <section id="why-us" className="bg-[#0A192F] text-white py-14 sm:py-16 relative overflow-hidden border-t border-b border-slate-800">
       {/* Background Action Player Watermark Silhouette */}
-      <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 pointer-events-none mix-blend-luminosity">
+      <div className="absolute inset-0 opacity-50 pointer-events-none">
         <img
-          src="https://images.pexels.com/photos/30387508/pexels-photo-30387508.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=600&w=800"
+          src="/images/why-us-bg.png"
           alt="Cricket Action"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
         />
       </div>
 
@@ -60,7 +60,7 @@ export const WhyChooseUs: React.FC = () => {
         </div>
 
         {/* 5 Feature Badges Row */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-4 items-start">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2 sm:gap-4 items-start">
           {features.map((item) => (
             <div
               key={item.id}
