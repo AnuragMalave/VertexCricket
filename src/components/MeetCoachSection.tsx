@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ShieldCheck, ArrowRight, X } from 'lucide-react';
+import coachImg from '../assets/Coach Image (2).png';
 
 export const MeetCoachSection: React.FC = () => {
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
@@ -36,7 +37,7 @@ export const MeetCoachSection: React.FC = () => {
             {/* Coach Image */}
             <div className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px] mx-auto flex justify-center">
               <img
-                src="/images/coach-sanjay.png"
+                src={coachImg}
                 alt="Coach Sanjay Darwatkar - Founder & Head Coach"
                 className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
               />
@@ -62,7 +63,7 @@ export const MeetCoachSection: React.FC = () => {
 
             <div>
               <h3 className="font-display font-bold text-2xl sm:text-3xl text-white tracking-wide">
-                Sanjay Daruwatkar
+                Sanjay Darwatkar
               </h3>
               <p className="text-xs font-bold font-inter text-amber-400 uppercase tracking-widest mt-1">
                 FOUNDER &amp; HEAD COACH
@@ -71,7 +72,7 @@ export const MeetCoachSection: React.FC = () => {
             </div>
 
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-inter font-normal">
-              A dedicated mentor and leader with 20+ years of coaching experience. He has mentored 1000+ young cricketers, helping them grow into confident, skilled and disciplined athletes ready for the future.
+              A dedicated mentor and leader with 25+ years of coaching experience. He has mentored 1000+ young cricketers, helping them grow into confident, skilled and disciplined athletes ready for the future.
             </p>
           </div>
 
@@ -110,7 +111,7 @@ export const MeetCoachSection: React.FC = () => {
                   {/* Certificate Details */}
                   <div className="space-y-2 text-left">
                     <h4 className="font-bold text-sm sm:text-base text-white leading-snug">
-                      National Cricket Academy (BCCI)
+                      Board of Control for Cricket in India (BCCI)
                     </h4>
                     <p className="text-xs text-slate-300 font-medium">
                       Level I Coaching Certificate

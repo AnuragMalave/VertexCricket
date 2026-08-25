@@ -10,6 +10,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
   const [scrolled, setScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isCtaSectionVisible, setIsCtaSectionVisible] = useState(false);
 
   const navLinks = [
     { id: 'home', label: 'HOME', href: '#home' },
@@ -32,6 +33,46 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+    const visibleElements = new Set<Element>();
+
+    const initObserver = () => {
+      const ctaElements = document.querySelectorAll('[data-has-cta="true"]');
+      if (ctaElements.length === 0) return;
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              visibleElements.add(entry.target);
+            } else {
+              visibleElements.delete(entry.target);
+            }
+          });
+          setIsCtaSectionVisible(visibleElements.size > 0);
+        },
+        {
+          threshold: 0.3,
+        }
+      );
+
+      const currentObserver = observer;
+      if (currentObserver) {
+        ctaElements.forEach((el) => currentObserver.observe(el));
+      }
+    };
+
+    const timer = setTimeout(initObserver, 0);
+
+    return () => {
+      clearTimeout(timer);
+      if (observer) {
+        observer.disconnect();
+      }
+    };
   }, []);
 
   return (
@@ -69,7 +110,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => onOpenEnroll()}
-              className="relative group overflow-hidden bg-[#053E58] hover:bg-[#032A3C] text-white px-6 py-2.5 rounded-md font-semibold text-xs font-inter uppercase tracking-wider transition-all shadow-sm hover:shadow-[#053E58]/25 flex items-center gap-1.5 cursor-pointer"
+              className={`relative group overflow-hidden bg-[#053E58] hover:bg-[#032A3C] text-white px-6 py-2.5 rounded-md font-semibold text-xs font-inter uppercase tracking-wider shadow-sm hover:shadow-[#053E58]/25 flex items-center gap-1.5 cursor-pointer transition-all duration-300 ${
+                isCtaSectionVisible
+                  ? 'opacity-0 scale-95 -translate-y-1 pointer-events-none invisible'
+                  : 'opacity-100 scale-100 translate-y-0 pointer-events-auto visible'
+              }`}
             >
               <span className="relative z-10">ENROLL NOW</span>
             </button>
@@ -114,7 +159,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
                   setMobileMenuOpen(false);
                   onOpenEnroll();
                 }}
-                className="w-full py-3 bg-[#053E58] text-white font-bold rounded-lg text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2"
+                className={`w-full py-3 bg-[#053E58] text-white font-bold rounded-lg text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2 transition-all duration-300 ${
+                  isCtaSectionVisible
+                    ? 'opacity-0 scale-95 pointer-events-none invisible'
+                    : 'opacity-100 scale-100 pointer-events-auto visible'
+                }`}
               >
                 ENROLL NOW <ArrowRight className="w-4 h-4" />
               </button>

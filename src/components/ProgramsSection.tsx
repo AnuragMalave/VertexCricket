@@ -13,21 +13,21 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
   const programs = [
     {
       key: 'beginner',
-      title: 'BEGINNER PROGRAM',
+      title: 'FOUNDATION PROGRAM',
       image: '/images/program-beginner.jpg',
       description: 'Perfect for new players to learn basics, techniques and game understanding.',
       stars: 1,
     },
     {
       key: 'intermediate',
-      title: 'INTERMEDIATE PROGRAM',
+      title: 'DEVELOPMENT PROGRAM',
       image: '/images/program-intermediate.jpg',
       description: 'Enhance your skills, game sense and performance with advanced training.',
       stars: 2,
     },
     {
       key: 'advanced',
-      title: 'ADVANCED PROGRAM',
+      title: 'HIGH PERFORMANCE PROGRAM',
       image: '/images/program-advanced.jpg',
       description: 'High-performance training for competitions and professional cricket.',
       stars: 3,
@@ -109,7 +109,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                 <div className="pt-3 flex items-center justify-between border-t border-slate-100">
                   <button
                     onClick={() => onSelectProgramKey(prog.key)}
-                    className="text-[#053E58] hover:text-[#032A3C] font-semibold font-inter text-xs uppercase tracking-wider flex items-center gap-1.5 group/link cursor-pointer"
+                    className="text-[#DC2626] hover:text-red-700 font-semibold font-inter text-xs uppercase tracking-wider flex items-center gap-1.5 group/link cursor-pointer"
                   >
                     <span>LEARN MORE</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />

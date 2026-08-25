@@ -7,7 +7,7 @@ interface EnrollModalProps {
   defaultProgram?: string;
 }
 
-export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defaultProgram = 'Beginner Program' }) => {
+export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defaultProgram = 'FOUNDATION PROGRAM' }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -229,9 +229,9 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
                     <label className="block text-xs font-semibold text-slate-700 mb-1">Select Program *</label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[
-                        { title: 'Beginner Program', age: 'Ages 6-12', desc: 'Basics & Fun' },
-                        { title: 'Intermediate Program', age: 'Ages 12-16', desc: 'Skill Enhancement' },
-                        { title: 'Advanced Program', age: 'Ages 15+', desc: 'Pro Competition' },
+                        { title: 'FOUNDATION PROGRAM', age: 'Ages 6-12', desc: 'Basics & Fun' },
+                        { title: 'DEVELOPMENT PROGRAM', age: 'Ages 12-16', desc: 'Skill Enhancement' },
+                        { title: 'HIGH PERFORMANCE PROGRAM', age: 'Ages 15+', desc: 'Pro Competition' },
                       ].map((item) => (
                         <div
                           key={item.title}

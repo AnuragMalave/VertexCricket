@@ -86,6 +86,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnroll }) => {
                 </span>
                 <span className="text-white font-medium">5:00 PM – 7:00 PM</span>
               </div>
+              <div className="flex justify-between items-center py-1 border-b border-slate-800/60">
+                <span className="flex items-center gap-2">
+                  <Clock className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
+                  <span>Sat – Sun:</span>
+                </span>
+                <span className="text-white font-medium">On Demand</span>
+              </div>
             </div>
 
             {/* <button

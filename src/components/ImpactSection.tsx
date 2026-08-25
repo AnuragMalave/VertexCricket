@@ -1,5 +1,6 @@
 import React from 'react';
 import { TrainedPlayersIcon, TrophyIcon, CoachBadgeIcon, DedicationIcon } from './CricketIcons';
+import impactImg from '../assets/Impact Section image.png';
 
 export const ImpactSection: React.FC = () => {
   const stats = [
@@ -17,8 +18,8 @@ export const ImpactSection: React.FC = () => {
     },
     {
       id: 3,
-      number: '15+',
-      label: 'EXPERT COACHES',
+      number: 'LEVEL 1',
+      label: 'BCCI CERTIFIED COACH',
       icon: <CoachBadgeIcon className="w-8 h-8 text-slate-700" />,
     },
     {
@@ -41,7 +42,7 @@ export const ImpactSection: React.FC = () => {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
               <img
-                src="/images/cricket-gear.png"
+                src={impactImg}
                 alt="Vertex Cricket Equipment"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

@@ -7,7 +7,7 @@ interface BottomCTAProps {
 
 export const BottomCTA: React.FC<BottomCTAProps> = ({ onOpenEnroll }) => {
   return (
-    <section className="relative py-16 sm:py-18 overflow-hidden bg-[#07111E] text-white border-t border-slate-800">
+    <section data-has-cta="true" className="relative py-16 sm:py-18 overflow-hidden bg-[#07111E] text-white border-t border-slate-800">
       {/* Background Stadium Photo Overlay */}
       <div className="absolute inset-0 z-0">
         <img

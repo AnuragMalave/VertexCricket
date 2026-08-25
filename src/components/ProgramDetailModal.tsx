@@ -17,7 +17,7 @@ export interface ProgramData {
 export const PROGRAM_DETAILS: Record<string, ProgramData> = {
   beginner: {
     id: 'beginner',
-    title: 'BEGINNER PROGRAM',
+    title: 'FOUNDATION PROGRAM',
     ageGroup: 'Ages 6 - 12 Years',
     tagline: 'Perfect for new players to learn basics, techniques and game understanding.',
     description: 'Designed specifically for young aspirants starting their cricket journey. We focus on establishing solid fundamental mechanics for grip, stance, swing, bowling action, catch technique, and field agility while fostering maximum joy for the game.',
@@ -28,15 +28,15 @@ export const PROGRAM_DETAILS: Record<string, ProgramData> = {
       'Soft-ball Hand-Eye Coordination Drills',
       'Basic Fielding & Catching Techniques',
       'Fun Mini-Matches & Rules Orientation',
-      'Weekly Progress Card for Parents'
+      // 'Weekly Progress Card for Parents'
     ],
-    schedule: 'Mon, Wed, Fri (6:30 AM - 8:30 AM) OR (4:00 PM - 6:00 PM)',
+    schedule: 'Mon - Fri : 5:00 PM – 7:00 PM',
     ratio: '1 Coach for every 6 Students',
     fee: '₹4,500 / Month ($60/mo)'
   },
   intermediate: {
     id: 'intermediate',
-    title: 'INTERMEDIATE PROGRAM',
+    title: 'DEVELOPMENT PROGRAM',
     ageGroup: 'Ages 12 - 16 Years',
     tagline: 'Enhance your skills, game sense and performance with advanced training.',
     description: 'Targeted at club players and school team members looking to refine shot selection, spin vs pace execution, tactical awareness, pitch reading, match simulations, and specialized physical conditioning.',
@@ -49,13 +49,13 @@ export const PROGRAM_DETAILS: Record<string, ProgramData> = {
       'Fitness, Core Strength & Speed Conditioning',
       'High-Speed Video Stroke Analysis'
     ],
-    schedule: 'Tue, Thu, Sat (6:00 AM - 8:30 AM) OR (4:30 PM - 7:00 PM)',
+    schedule: 'Mon - Fri : 5:00 PM – 7:00 PM',
     ratio: '1 Coach for every 5 Students',
     fee: '₹7,000 / Month ($95/mo)'
   },
   advanced: {
     id: 'advanced',
-    title: 'ADVANCED PROGRAM',
+    title: 'HIGH PERFORMANCE PROGRAM',
     ageGroup: 'Ages 15+ / Competitive',
     tagline: 'High-performance training for competitions and professional cricket.',
     description: 'An elite high-performance pathway for state, district, and professional league aspirants. Includes personalized bi-weekly match analytics, mental toughness coaching, custom nutrition plans, and exposure to top-tier tournaments.',
@@ -65,10 +65,10 @@ export const PROGRAM_DETAILS: Record<string, ProgramData> = {
       'State-Level Tournament Placement & Trial Prep',
       'Mental Conditioning & High-Pressure Scenarios',
       'Dedicated Fast Bowling / Spin Bowling Lab',
-      '1-on-1 Mentorship by Ex-Ranji Trophy Stars',
+      '1-on-1 Mentorship by Experienced Coaches',
       'Customized Sports Diet & Recovery Protocol'
     ],
-    schedule: 'Daily (Mon to Sat) 6:00 AM - 9:00 AM & 4:00 PM - 7:00 PM',
+    schedule: "Mon - Fri : 5:00 PM – 7:00 PM\nSat - Sun : On Demand",
     ratio: '1-on-1 and 1 Coach for every 3 Students',
     fee: '₹12,000 / Month ($160/mo)'
   }
@@ -111,9 +111,9 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
           </button>
 
           <div className="absolute bottom-4 left-6 right-6 text-white">
-            <span className="inline-block px-3 py-1 bg-[#DC2626] text-white text-[11px] font-semibold font-inter rounded-full mb-2 uppercase tracking-wider">
+            {/* <span className="inline-block px-3 py-1 bg-[#DC2626] text-white text-[11px] font-semibold font-inter rounded-full mb-2 uppercase tracking-wider">
               {program.ageGroup}
-            </span>
+            </span> */}
             <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight uppercase leading-snug">{program.title}</h2>
           </div>
         </div>
@@ -142,16 +142,16 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
           </div>
 
           {/* Quick Info Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-100 p-4 rounded-xl border border-slate-200">
+          <div className="bg-slate-100 p-4 rounded-xl border border-slate-200">
             <div className="flex items-start gap-2.5">
               <Clock className="w-4 h-4 text-[#DC2626] mt-0.5" />
               <div>
                 <span className="text-[10px] uppercase font-bold text-slate-500 block">Batch Timing</span>
-                <span className="text-xs font-semibold text-slate-800">{program.schedule}</span>
+                <span className="text-xs font-semibold text-slate-800 whitespace-pre-line">{program.schedule}</span>
               </div>
             </div>
 
-            <div className="flex items-start gap-2.5">
+            {/* <div className="flex items-start gap-2.5">
               <Users className="w-4 h-4 text-[#DC2626] mt-0.5" />
               <div>
                 <span className="text-[10px] uppercase font-bold text-slate-500 block">Coach Ratio</span>
@@ -165,7 +165,7 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
                 <span className="text-[10px] uppercase font-bold text-slate-500 block">Fee Investment</span>
                 <span className="text-xs font-bold text-[#DC2626]">{program.fee}</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

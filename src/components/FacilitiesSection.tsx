@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { NetFacilityIcon } from './CricketIcons';
 import { ShieldCheck, CheckCircle2 } from 'lucide-react';
+import internationalStandersImg from '../assets/international standers.jpg';
+import astroTurfImg from '../assets/Astro turf.jpg';
+import videoAnalysisClip from '../assets/MicrosoftTeams-video.mp4';
 
 export const FacilitiesSection: React.FC = () => {
   const [activeFacility, setActiveFeature] = useState(0);
@@ -11,7 +14,7 @@ export const FacilitiesSection: React.FC = () => {
       title: 'International Standard Turf Pitches',
       subtitle: '8 Clay & Black Soil Center Wickets',
       desc: 'Accurately curated turf pitches providing varied bounce, pace, and turn conditions matching international stadium specs.',
-      image: 'https://images.pexels.com/photos/35330492/pexels-photo-35330492.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1000',
+      image: internationalStandersImg,
       specs: ['Custom Soil Mix', 'Sub-surface Drainage System', 'Dedicated Match Center Pitch', 'Curator Maintained Daily'],
     },
     {
@@ -19,7 +22,7 @@ export const FacilitiesSection: React.FC = () => {
       title: 'Astro-Turf & Automated Bowling Nets',
       subtitle: '12 All-Weather Practice Lanes',
       desc: 'High-density AstroTurf and artificial rubber nets equipped with professional Bola bowling machines capable of 150km/h seam & spin.',
-      image: 'https://images.pexels.com/photos/30387508/pexels-photo-30387508.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1000',
+      image: astroTurfImg,
       specs: ['Programmable Bowling Machines', 'All-Weather Enclosed Nets', 'Speed Gun Radar Tracking', 'Safety Netting Enclosures'],
     },
     {
@@ -27,7 +30,7 @@ export const FacilitiesSection: React.FC = () => {
       title: 'Biomechanics Video Analysis Lab',
       subtitle: '240fps High-Speed Multi-Angle Cameras',
       desc: 'State-of-the-art visual recording studio with Dartfish biomechanical feedback software for pinpointing release angles & footwork.',
-      image: 'https://images.pexels.com/photos/4770720/pexels-photo-4770720.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1000',
+      video: videoAnalysisClip,
       specs: ['3D Motion Capture', 'Instant Dugout Display Sync', 'Release Point Tracking', 'Biweekly Player Reports'],
     },
     {
@@ -109,16 +112,29 @@ export const FacilitiesSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Image Feature */}
-          <div className="lg:col-span-6">
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-slate-700/80 shadow-2xl group">
-              <img
-                src={current.image}
-                alt={current.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-            </div>
+          {/* Right Image/Video Feature */}
+          <div className="lg:col-span-6 flex items-center justify-center">
+            {'video' in current && current.video ? (
+              <div className="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group bg-black w-full flex items-center justify-center">
+                <video
+                  src={current.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto max-h-[420px] object-contain rounded-2xl"
+                />
+              </div>
+            ) : (
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-slate-700/80 shadow-2xl group w-full">
+                <img
+                  src={'image' in current ? current.image : ''}
+                  alt={current.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+              </div>
+            )}
           </div>
 
         </div>
