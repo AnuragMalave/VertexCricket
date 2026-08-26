@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { MeetCoachSection } from './components/MeetCoachSection';
@@ -8,6 +8,7 @@ import { WhyChooseUs } from './components/WhyChooseUs';
 import { ImpactSection } from './components/ImpactSection';
 // import { CoachesSection } from './components/CoachesSection';
 import { FacilitiesSection } from './components/FacilitiesSection';
+import { TestimonialsSection } from './components/TestimonialsSection';
 import { BottomCTA } from './components/BottomCTA';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
@@ -22,6 +23,14 @@ export function App() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [selectedProgramKey, setSelectedProgramKey] = useState<string | null>(null);
 
+  useEffect(() => {
+    // Reset scroll position to top (Hero section) on page refresh
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleOpenEnroll = (programTitle?: string) => {
     if (programTitle) {
       setEnrollDefaultProgram(programTitle);
@@ -30,7 +39,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans antialiased selection:bg-[#DC2626] selection:text-white">
+    <div className="min-h-screen bg-white text-[#1E293B] flex flex-col font-sans antialiased selection:bg-[#DC2626] selection:text-white">
       {/* Top Navbar */}
       <Header onOpenEnroll={handleOpenEnroll} />
 
@@ -57,6 +66,8 @@ export function App() {
         {/* <CoachesSection /> */}
 
         <FacilitiesSection />
+
+        <TestimonialsSection />
 
         <BottomCTA onOpenEnroll={() => handleOpenEnroll('Beginner Program')} />
       </main>

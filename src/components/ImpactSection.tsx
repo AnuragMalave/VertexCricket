@@ -1,8 +1,11 @@
 import React from 'react';
 import { TrainedPlayersIcon, TrophyIcon, CoachBadgeIcon, DedicationIcon } from './CricketIcons';
 import impactImg from '../assets/Impact Section image.png';
+import { useScrollReveal } from '../utils/useScrollReveal';
 
 export const ImpactSection: React.FC = () => {
+  const { ref, isVisible } = useScrollReveal<HTMLElement>();
+
   const stats = [
     {
       id: 1,
@@ -31,11 +34,11 @@ export const ImpactSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-[#F8FAFC] relative overflow-hidden">
+    <section ref={ref} className="py-20 lg:py-28 bg-[#F8FAFC] relative overflow-hidden">
       {/* Top Right Grid Dot Background Accent */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-grid-dots opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left Column: Equipment Visual */}

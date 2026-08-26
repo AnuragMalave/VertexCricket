@@ -5,10 +5,24 @@
   --font-inter: 'Inter', sans-serif;
 }
 
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     font-family: 'Inter', sans-serif;
+  }
+
+  /* Physical button press feedback */
+  button:active,
+  a.btn-primary:active,
+  a.btn-navy:active {
+    transform: scale(0.97) !important;
+    transition: transform 120ms var(--ease-out) !important;
   }
 }
 
@@ -55,30 +69,77 @@
   clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-/* Custom animation effects */
+/* Custom animation keyframes */
 @keyframes floatSlow {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px);
   }
-
   50% {
     transform: translateY(-8px);
   }
 }
 
 @keyframes pulseGlow {
-
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.8;
     transform: scale(1);
   }
-
   50% {
     opacity: 1;
     transform: scale(1.03);
+  }
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUpModal {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideUpReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideNext {
+  from {
+    opacity: 0.3;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slidePrev {
+  from {
+    opacity: 0.3;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -90,27 +151,65 @@
   animation: pulseGlow 3s ease-in-out infinite;
 }
 
-/* Metallic and glossy hover states */
-.btn-primary {
-  background: linear-gradient(135deg, #053E58 0%, #032A3C 100%);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.animate-fadeIn {
+  animation: fadeInModal 250ms var(--ease-out) forwards;
 }
 
-.btn-primary:hover {
-  background: linear-gradient(135deg, #075274 0%, #053E58 100%);
-  box-shadow: 0 10px 25px -5px rgba(5, 62, 88, 0.4);
-  transform: translateY(-2px);
+.animate-scaleUp {
+  animation: scaleUpModal 250ms var(--ease-out) forwards;
+}
+
+.animate-reveal {
+  animation: slideUpReveal 500ms var(--ease-out) forwards;
+}
+
+.animate-slide-next {
+  animation: slideNext 300ms var(--ease-out) forwards;
+}
+
+.animate-slide-prev {
+  animation: slidePrev 300ms var(--ease-out) forwards;
+}
+
+/* Metallic and glossy hover states with hardware acceleration */
+.btn-primary {
+  background: linear-gradient(135deg, #053E58 0%, #032A3C 100%);
+  transition: transform 200ms var(--ease-out), background 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  will-change: transform;
 }
 
 .btn-navy {
   background: linear-gradient(135deg, #0B1B2D 0%, #172A45 100%);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 200ms var(--ease-out), background 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  will-change: transform;
 }
 
-.btn-navy:hover {
-  background: linear-gradient(135deg, #172A45 0%, #203A60 100%);
-  box-shadow: 0 10px 25px -5px rgba(11, 27, 45, 0.4);
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #075274 0%, #053E58 100%);
+    box-shadow: 0 10px 25px -5px rgba(5, 62, 88, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-navy:hover {
+    background: linear-gradient(135deg, #172A45 0%, #203A60 100%);
+    box-shadow: 0 10px 25px -5px rgba(11, 27, 45, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+/* Reduced motion accessibility rules */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-float,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
 }
 
 /* Grid pattern background */

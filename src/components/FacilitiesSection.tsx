@@ -4,8 +4,10 @@ import { ShieldCheck, CheckCircle2 } from 'lucide-react';
 import internationalStandersImg from '../assets/international standers.jpg';
 import astroTurfImg from '../assets/Astro turf.jpg';
 import videoAnalysisClip from '../assets/MicrosoftTeams-video.mp4';
+import { useScrollReveal } from '../utils/useScrollReveal';
 
 export const FacilitiesSection: React.FC = () => {
+  const { ref, isVisible } = useScrollReveal<HTMLElement>();
   const [activeFacility, setActiveFeature] = useState(0);
 
   const facilities = [
@@ -15,7 +17,7 @@ export const FacilitiesSection: React.FC = () => {
       subtitle: '8 Clay & Black Soil Center Wickets',
       desc: 'Accurately curated turf pitches providing varied bounce, pace, and turn conditions matching international stadium specs.',
       image: internationalStandersImg,
-      specs: ['Custom Soil Mix', 'Sub-surface Drainage System', 'Dedicated Match Center Pitch', 'Curator Maintained Daily'],
+      specs: ['Custom Soil Mix', 'Sub-surface Drainage System', 'Curator Maintained Daily'],
     },
     {
       id: 'nets',
@@ -46,8 +48,8 @@ export const FacilitiesSection: React.FC = () => {
   const current = facilities[activeFacility];
 
   return (
-    <section id="facilities" className="py-20 lg:py-16 bg-[#0B1B2D] text-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section ref={ref} id="facilities" className="py-20 lg:py-16 bg-[#0B1B2D] text-white relative overflow-hidden">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
 
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-slate-800 pb-4">

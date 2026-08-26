@@ -1,7 +1,9 @@
 import React from 'react';
 import { FocusUserIcon, FitnessIcon, CrossedBatsIcon, VideoAnalysisIcon, TournamentIcon } from './CricketIcons';
+import { useScrollReveal } from '../utils/useScrollReveal';
 
 export const WhyChooseUs: React.FC = () => {
+  const { ref, isVisible } = useScrollReveal<HTMLElement>();
 
   const features = [
     {
@@ -37,7 +39,7 @@ export const WhyChooseUs: React.FC = () => {
   ];
 
   return (
-    <section id="why-us" className="bg-[#0A192F] text-white py-14 sm:py-16 relative overflow-hidden border-t border-b border-slate-800">
+    <section ref={ref} id="why-us" className="bg-[#0A192F] text-white py-14 sm:py-16 relative overflow-hidden border-t border-b border-slate-800">
       {/* Background Action Player Watermark Silhouette */}
       <div className="absolute inset-0 opacity-50 pointer-events-none">
         <img
@@ -47,7 +49,7 @@ export const WhyChooseUs: React.FC = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         {/* Section Heading */}
         <div className="text-center mb-12">
           <span className="text-amber-500 font-semibold text-xs tracking-[0.2em] uppercase font-inter block mb-3">

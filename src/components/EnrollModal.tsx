@@ -43,7 +43,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
       <div
-        className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100 my-8 max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100 my-8 max-h-[90vh] flex flex-col animate-scaleUp"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Bar */}

@@ -19,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
     // { id: 'coaches', label: 'COACHES', href: '#coaches' },
     { id: 'facilities', label: 'FACILITIES', href: '#facilities' },
     { id: 'why-us', label: 'WHY US', href: '#why-us' },
+    { id: 'testimonials', label: 'REVIEWS', href: '#testimonials' },
     { id: 'contact', label: 'CONTACT', href: '#contact' },
   ];
 

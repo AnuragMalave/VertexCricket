@@ -91,7 +91,7 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
       <div
-        className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden my-6 max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden my-6 max-h-[90vh] flex flex-col animate-scaleUp"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Hero Image Banner */}
