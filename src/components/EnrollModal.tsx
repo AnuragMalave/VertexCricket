@@ -41,7 +41,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fadeIn" onClick={resetAndClose}>
       <div
         className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100 my-8 max-h-[90vh] flex flex-col animate-scaleUp"
         onClick={(e) => e.stopPropagation()}
@@ -49,9 +49,11 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
         {/* Header Bar */}
         <div className="bg-[#0B1B2D] px-6 py-4 text-white flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#DC2626] flex items-center justify-center text-white font-semibold font-display text-lg">
-              V
-            </div>
+            <img
+              src="/images/logo.png"
+              alt="Vertex Cricket Academy"
+              className="h-9 w-auto object-contain brightness-0 invert"
+            />
             <div>
               <h3 className="font-display text-xl tracking-wider uppercase font-extrabold">Academy Enrollment</h3>
               <p className="text-xs font-inter text-slate-400 font-normal">Vertex Cricket Academy • Admissions 2026</p>
@@ -59,7 +61,7 @@ export const EnrollModal: React.FC<EnrollModalProps> = ({ isOpen, onClose, defau
           </div>
           <button
             onClick={resetAndClose}
-            className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-all active:scale-90 cursor-pointer"
             aria-label="Close"
           >
             <X className="w-5 h-5" />

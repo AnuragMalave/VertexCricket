@@ -6,7 +6,7 @@ interface FooterProps {
   onOpenEnroll: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenEnroll }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenEnroll: _onOpenEnroll }) => {
   return (
     <footer id="contact" className="bg-[#07111E] text-slate-300 pt-16 pb-8 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

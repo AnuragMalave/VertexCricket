@@ -49,7 +49,7 @@ export const FacilitiesSection: React.FC = () => {
 
   return (
     <section ref={ref} id="facilities" className="py-20 lg:py-16 bg-[#0B1B2D] text-white relative overflow-hidden">
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 apple-reveal ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
 
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-slate-800 pb-4">
@@ -69,8 +69,8 @@ export const FacilitiesSection: React.FC = () => {
             <button
               key={fac.id}
               onClick={() => setActiveFeature(idx)}
-              className={`px-5 py-3 rounded-xl font-semibold font-inter text-xs uppercase tracking-wider whitespace-nowrap transition-all flex items-center gap-2 border cursor-pointer ${activeFacility === idx
-                ? 'bg-[#DC2626] text-white border-[#DC2626] shadow-lg shadow-red-900/30'
+              className={`px-5 py-3 rounded-xl font-semibold font-inter text-xs uppercase tracking-wider whitespace-nowrap transition-all duration-300 flex items-center gap-2 border cursor-pointer active:scale-95 ${activeFacility === idx
+                ? 'bg-[#DC2626] text-white border-[#DC2626] shadow-lg shadow-red-900/30 scale-100'
                 : 'bg-slate-800/60 text-slate-300 border-slate-700/80 hover:bg-slate-800 hover:text-white'
                 }`}
             >
@@ -81,10 +81,10 @@ export const FacilitiesSection: React.FC = () => {
         </div>
 
         {/* Main Display Feature Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-slate-900/80 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-slate-900/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl apple-card-interactive">
 
           {/* Left Text Detail */}
-          <div className="lg:col-span-6 space-y-5 text-left">
+          <div className="lg:col-span-6 space-y-5 text-left animate-fadeIn key={activeFacility}">
             <div>
               <span className="text-amber-400 font-semibold font-inter text-xs uppercase tracking-wider block mb-1">
                 {current.subtitle}
@@ -101,7 +101,7 @@ export const FacilitiesSection: React.FC = () => {
             {/* Key Specs Checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               {current.specs.map((spec, i) => (
-                <div key={i} className="flex items-center gap-2.5 text-xs text-slate-200 font-inter font-normal bg-slate-800/80 p-2.5 rounded-lg border border-slate-700/60">
+                <div key={i} className="flex items-center gap-2.5 text-xs text-slate-200 font-inter font-normal bg-slate-800/80 p-2.5 rounded-lg border border-slate-700/60 transition-transform hover:scale-[1.02]">
                   <CheckCircle2 className="w-4 h-4 text-[#DC2626] flex-shrink-0" />
                   <span>{spec}</span>
                 </div>
@@ -118,9 +118,10 @@ export const FacilitiesSection: React.FC = () => {
           <div className="lg:col-span-6 flex items-center justify-center">
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-slate-700/80 shadow-2xl group w-full">
               <img
+                key={activeFacility}
                 src={current.image}
                 alt={current.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 animate-fadeIn"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
             </div>
@@ -132,3 +133,4 @@ export const FacilitiesSection: React.FC = () => {
     </section>
   );
 };
+

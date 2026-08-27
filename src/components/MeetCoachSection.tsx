@@ -26,7 +26,7 @@ export const MeetCoachSection: React.FC = () => {
       <div className="absolute inset-0 bg-grid-dots-dark opacity-15 pointer-events-none" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 apple-reveal ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-10">
 
           {/* Left Column: Coach Cutout & Radial Background Rings */}
@@ -83,7 +83,7 @@ export const MeetCoachSection: React.FC = () => {
 
           {/* Right Column: Certificate Card */}
           <div className="w-full lg:w-4/12">
-            <div className="bg-[#061628]/90 border border-[#132A44] rounded-2xl p-5 sm:p-6 shadow-2xl flex flex-col justify-between h-full">
+            <div className="bg-[#061628]/90 border border-[#132A44] rounded-2xl p-5 sm:p-6 shadow-2xl flex flex-col justify-between h-full apple-card-interactive">
               <div>
                 {/* Card Top Badge */}
                 <div className="flex items-center gap-2 text-amber-400 font-semibold text-xs tracking-wider uppercase mb-5">
@@ -96,7 +96,7 @@ export const MeetCoachSection: React.FC = () => {
                   {/* Certificate Image cutout */}
                   <div
                     onClick={() => setIsCertModalOpen(true)}
-                    className="relative group cursor-pointer shrink-0 w-[110px] sm:w-[130px] rounded border border-white/80 bg-white shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.03]"
+                    className="relative group cursor-pointer shrink-0 w-[110px] sm:w-[130px] rounded border border-white/80 bg-white shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.05] active:scale-95"
                   >
                     <img
                       src="/images/coach-certificate.jpg"
@@ -132,7 +132,7 @@ export const MeetCoachSection: React.FC = () => {
               <div className="flex justify-end pt-2">
                 <button
                   onClick={() => setIsCertModalOpen(true)}
-                  className="py-2.5 px-4 rounded-lg border border-amber-400/80 bg-transparent hover:bg-amber-400/10 text-amber-400 font-semibold text-xs tracking-wider uppercase flex items-center gap-2 transition-all cursor-pointer shadow-sm group"
+                  className="py-2.5 px-4 rounded-lg border border-amber-400/80 bg-transparent hover:bg-amber-400/10 active:scale-95 text-amber-400 font-semibold text-xs tracking-wider uppercase flex items-center gap-2 transition-all cursor-pointer shadow-sm group"
                 >
                   <span>VIEW CERTIFICATE</span>
                   <ArrowRight className="w-3.5 h-3.5 text-amber-400 transition-transform group-hover:translate-x-1" />
@@ -152,7 +152,7 @@ export const MeetCoachSection: React.FC = () => {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-3xl w-full bg-[#0B1B2D] border border-slate-700 rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 cursor-default"
+            className="relative max-w-3xl w-full bg-[#0B1B2D] border border-slate-700 rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 cursor-default animate-scaleUp"
           >
             <div className="flex items-center justify-between pb-3 border-b border-slate-700/80 mb-4">
               <div>
@@ -163,7 +163,7 @@ export const MeetCoachSection: React.FC = () => {
               </div>
               <button
                 onClick={() => setIsCertModalOpen(false)}
-                className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer active:scale-90"
                 aria-label="Close Modal"
               >
                 <X className="w-5 h-5" />
@@ -183,3 +183,4 @@ export const MeetCoachSection: React.FC = () => {
     </section>
   );
 };
+

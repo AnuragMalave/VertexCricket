@@ -6,7 +6,7 @@ interface WhatsAppButtonProps {
 }
 
 export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
-  phoneNumber = '91XXXXXXXXXX',
+  phoneNumber = '917722023037',
   message = "Hi! I'm interested in Vertex Cricket Academy's training programs. Can you share more details?",
 }) => {
   const encodedMessage = encodeURIComponent(message);
@@ -18,7 +18,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 group flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110"
+      className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 group flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110 active:scale-90"
     >
       {/* Soft pulsing ring animation around the button */}
       <span className="absolute -inset-1 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none" />
@@ -26,7 +26,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       {/* Main Circular WhatsApp Button */}
       <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-2xl transition-colors">
         <svg
-          className="w-7 h-7 sm:w-8 sm:h-8 fill-white"
+          className="w-7 h-7 sm:w-8 sm:h-8 fill-white transition-transform group-hover:scale-110"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -36,3 +36,4 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
     </a>
   );
 };
+

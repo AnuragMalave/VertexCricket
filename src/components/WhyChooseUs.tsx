@@ -49,7 +49,7 @@ export const WhyChooseUs: React.FC = () => {
         />
       </div>
 
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 apple-reveal ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         {/* Section Heading */}
         <div className="text-center mb-12">
           <span className="text-amber-500 font-semibold text-xs tracking-[0.2em] uppercase font-inter block mb-3">
@@ -63,10 +63,11 @@ export const WhyChooseUs: React.FC = () => {
 
         {/* 5 Feature Badges Row */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-2 sm:gap-4 items-start">
-          {features.map((item) => (
+          {features.map((item, idx) => (
             <div
               key={item.id}
-              className="flex flex-col items-center text-center group cursor-pointer"
+              style={{ transitionDelay: `${idx * 80}ms` }}
+              className="flex flex-col items-center text-center group cursor-pointer p-3 rounded-xl"
             >
               {/* Circular Outline Icon Container */}
               <div className="w-16 h-16 rounded-full border-2 border-slate-600 group-hover:border-[#DC2626] bg-slate-900/80 group-hover:bg-[#DC2626] text-slate-200 group-hover:text-white flex items-center justify-center mb-3 transition-all duration-300 shadow-md group-hover:shadow-red-500/20 group-hover:scale-110">
@@ -88,3 +89,4 @@ export const WhyChooseUs: React.FC = () => {
     </section>
   );
 };
+

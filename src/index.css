@@ -5,10 +5,25 @@
   --font-inter: 'Inter', sans-serif;
 }
 
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Barlow Condensed', 'Teko', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
 :root {
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  /* Apple Easing Curves (WWDC & Motion standards) */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-apple-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-reveal {
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 @layer base {
@@ -17,10 +32,12 @@
     font-family: 'Inter', sans-serif;
   }
 
-  /* Physical button press feedback */
+  /* Physical Apple tactile button & card press feedback on pointer down */
   button:active,
-  a.btn-primary:active,
-  a.btn-navy:active {
+  a:active,
+  .btn-primary:active,
+  .btn-navy:active,
+  .apple-card-interactive:active {
     transform: scale(0.97) !important;
     transition: transform 120ms var(--ease-out) !important;
   }
@@ -69,7 +86,7 @@
   clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-/* Custom animation keyframes */
+/* Custom animation keyframes for Apple style motion */
 @keyframes floatSlow {
   0%, 100% {
     transform: translateY(0px);
@@ -93,16 +110,18 @@
 @keyframes fadeInModal {
   from {
     opacity: 0;
+    backdrop-filter: blur(0px);
   }
   to {
     opacity: 1;
+    backdrop-filter: blur(12px);
   }
 }
 
 @keyframes scaleUpModal {
   from {
     opacity: 0;
-    transform: scale(0.95) translateY(8px);
+    transform: scale(0.94) translateY(12px);
   }
   to {
     opacity: 1;
@@ -113,7 +132,7 @@
 @keyframes slideUpReveal {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -156,11 +175,11 @@
 }
 
 .animate-scaleUp {
-  animation: scaleUpModal 250ms var(--ease-out) forwards;
+  animation: scaleUpModal 300ms var(--ease-apple-smooth) forwards;
 }
 
 .animate-reveal {
-  animation: slideUpReveal 500ms var(--ease-out) forwards;
+  animation: slideUpReveal 500ms var(--ease-apple-smooth) forwards;
 }
 
 .animate-slide-next {
@@ -171,7 +190,12 @@
   animation: slidePrev 300ms var(--ease-out) forwards;
 }
 
-/* Metallic and glossy hover states with hardware acceleration */
+/* Interactive Apple Card hover states with hardware acceleration */
+.apple-card-interactive {
+  transition: transform 300ms var(--ease-apple-smooth), box-shadow 300ms var(--ease-apple-smooth), border-color 300ms var(--ease-out);
+  will-change: transform;
+}
+
 .btn-primary {
   background: linear-gradient(135deg, #053E58 0%, #032A3C 100%);
   transition: transform 200ms var(--ease-out), background 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
@@ -185,6 +209,11 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .apple-card-interactive:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 35px -10px rgba(11, 27, 45, 0.12);
+  }
+
   .btn-primary:hover {
     background: linear-gradient(135deg, #075274 0%, #053E58 100%);
     box-shadow: 0 10px 25px -5px rgba(5, 62, 88, 0.4);
@@ -198,6 +227,19 @@
   }
 }
 
+/* Translucent Apple Glass Surface */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.glass-panel-dark {
+  background: rgba(11, 27, 45, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
 /* Reduced motion accessibility rules */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -207,8 +249,12 @@
     scroll-behavior: auto !important;
   }
   .animate-float,
-  .animate-pulse-glow {
+  .animate-pulse-glow,
+  .animate-reveal,
+  .animate-scaleUp {
     animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
 

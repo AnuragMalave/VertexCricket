@@ -17,22 +17,55 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
     { id: 'about', label: 'ABOUT', href: '#meet-coach' },
     { id: 'programs', label: 'PROGRAMS', href: '#programs' },
     // { id: 'coaches', label: 'COACHES', href: '#coaches' },
-    { id: 'facilities', label: 'FACILITIES', href: '#facilities' },
     { id: 'why-us', label: 'WHY US', href: '#why-us' },
+    { id: 'facilities', label: 'FACILITIES', href: '#facilities' },
     { id: 'testimonials', label: 'REVIEWS', href: '#testimonials' },
     { id: 'contact', label: 'CONTACT', href: '#contact' },
   ];
 
   useEffect(() => {
+    const sectionIds = ['home', 'meet-coach', 'programs', 'why-us', 'facilities', 'testimonials', 'contact'];
+    const sectionToTabMap: Record<string, string> = {
+      'home': 'home',
+      'meet-coach': 'about',
+      'programs': 'programs',
+      'facilities': 'facilities',
+      'why-us': 'why-us',
+      'testimonials': 'testimonials',
+      'contact': 'contact',
+    };
+
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      // Header backdrop blur & shadow on scroll
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
+
+      // Check if user is scrolled to the bottom of the page
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+      if (isAtBottom) {
+        setActiveTab('contact');
+        return;
+      }
+
+      // Active section detection on scroll
+      const scrollPosition = window.scrollY + 180;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sectionIds[i]);
+        if (section) {
+          const top = section.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveTab(sectionToTabMap[sectionIds[i]]);
+            break;
+          }
+        }
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -79,8 +112,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
-        ? 'bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-100'
-        : 'bg-white py-3 border-b border-slate-100'
+        ? 'bg-white/80 backdrop-blur-xl saturate-180 shadow-sm py-3 border-b border-slate-200/60'
+        : 'bg-white/95 backdrop-blur-md py-3 border-b border-slate-100'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
                 {link.label}
                 {/* Red Underline Bar for Active State */}
                 {activeTab === link.id && (
-                  <span className="absolute left-0 right-0 -bottom-1 h-[2.5px] bg-[#DC2626] rounded-full transition-all duration-300" />
+                  <span className="absolute left-0 right-0 -bottom-1 h-[2.5px] bg-[#DC2626] rounded-full transition-all duration-300 animate-scaleUp" />
                 )}
               </a>
             ))}
@@ -123,7 +156,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-[#053E58] hover:bg-slate-100 focus:outline-none"
+              className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-[#053E58] hover:bg-slate-100 focus:outline-none transition-transform active:scale-95"
               aria-label="Toggle navigation"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -134,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 shadow-xl animate-fadeIn">
+        <div className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 px-4 pt-3 pb-6 shadow-xl animate-fadeIn">
           <div className="flex flex-col space-y-3">
             {navLinks.map((link) => (
               <a
@@ -144,8 +177,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
                   setActiveTab(link.id);
                   setMobileMenuOpen(false);
                 }}
-                className={`px-3 py-2 rounded-lg text-sm font-bold tracking-wider flex items-center justify-between transition-colors ${activeTab === link.id
-                  ? 'bg-blue-50 text-[#053E58] font-extrabold'
+                className={`px-3 py-2 rounded-lg text-sm font-bold tracking-wider flex items-center justify-between transition-all active:scale-[0.98] ${activeTab === link.id
+                  ? 'bg-blue-50/80 text-[#053E58] font-extrabold'
                   : 'text-slate-700 hover:bg-slate-50'
                   }`}
               >
@@ -160,7 +193,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
                   setMobileMenuOpen(false);
                   onOpenEnroll();
                 }}
-                className={`w-full py-3 bg-[#053E58] text-white font-bold rounded-lg text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2 transition-all duration-300 ${
+                className={`w-full py-3 bg-[#053E58] text-white font-bold rounded-lg text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 ${
                   isCtaSectionVisible
                     ? 'opacity-0 scale-95 pointer-events-none invisible'
                     : 'opacity-100 scale-100 pointer-events-auto visible'
@@ -175,3 +208,4 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnroll }) => {
     </header>
   );
 };
+

@@ -18,28 +18,28 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       key: 'beginner',
       title: 'FOUNDATION PROGRAM',
       image: '/images/program-beginner.jpg',
-      description: 'Perfect for new players to learn basics, techniques and game understanding.',
+      description: 'Start Strong. Learn Right. For young players beginning their cricket journey.',
       stars: 1,
     },
     {
       key: 'intermediate',
       title: 'DEVELOPMENT PROGRAM',
       image: '/images/program-intermediate.jpg',
-      description: 'Enhance your skills, game sense and performance with advanced training.',
+      description: 'Learn. Improve. Compete. For players with basic cricket experience.',
       stars: 2,
     },
     {
       key: 'advanced',
       title: 'HIGH PERFORMANCE PROGRAM',
       image: '/images/program-advanced.jpg',
-      description: 'High-performance training for competitions and professional cricket.',
+      description: 'For players who want to compete at the next level.',
       stars: 3,
     },
   ];
 
   return (
     <section ref={ref} id="programs" className="py-12 lg:py-16 bg-[#F8FAFC]">
-      <div className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+      <div className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 apple-reveal ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
 
         {/* Header Row */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4 border-b border-slate-200/80 pb-5">
@@ -59,10 +59,12 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
 
         {/* 3 Program Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {programs.map((prog) => (
+          {programs.map((prog, idx) => (
             <div
+              onClick={() => onSelectProgramKey(prog.key)}
               key={prog.key}
-              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group border border-slate-200/80"
+              style={{ transitionDelay: `${idx * 100}ms` }}
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group border border-slate-200/80 apple-card-interactive"
             >
               {/* Image Container with Inset 6px Padding & Circular Badge Overlay */}
               <div className="relative p-1.5 pb-0">
@@ -70,13 +72,13 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                   <img
                     src={prog.image}
                     alt={prog.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 </div>
 
                 {/* Circular Badge Icon Overlay */}
                 <div className="absolute -bottom-5 left-5 z-20">
-                  <div className="w-12 h-12 rounded-full bg-[#053E58] text-white flex items-center justify-center border-4 border-white shadow-md transition-transform group-hover:scale-110 px-1">
+                  <div className="w-12 h-12 rounded-full bg-[#053E58] text-white flex items-center justify-center border-4 border-white shadow-md transition-transform duration-300 group-hover:scale-110 px-1">
                     <div className="flex items-end justify-center gap-0.1 pb-0">
                       {prog.stars === 3 ? (
                         <>
@@ -105,7 +107,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                   </h3>
 
                   {/* Red accent line */}
-                  <div className="w-7 h-0.5 bg-[#DC2626] rounded-full my-2.5" />
+                  <div className="w-7 h-0.5 bg-[#DC2626] rounded-full my-2.5 transition-all duration-300 group-hover:w-12" />
 
                   <p className="text-slate-500 text-xs sm:text-sm leading-relaxed font-inter font-normal">
                     {prog.description}
@@ -116,7 +118,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                 <div className="pt-3.5 flex items-center justify-between border-t border-slate-100">
                   <button
                     onClick={() => onSelectProgramKey(prog.key)}
-                    className="text-[#DC2626] hover:text-red-700 font-bold font-inter text-xs uppercase tracking-wider flex items-center gap-1.5 group/link cursor-pointer"
+                    className="text-[#DC2626] hover:text-red-700 font-bold font-inter text-xs uppercase tracking-wider flex items-center gap-1.5 group/link cursor-pointer active:scale-95 transition-transform"
                   >
                     <span>LEARN MORE</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />
@@ -124,7 +126,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
 
                   <button
                     onClick={() => onOpenEnroll(prog.title)}
-                    className="text-[10px] font-bold font-inter text-slate-600 hover:text-slate-900 uppercase tracking-wider border border-slate-300 hover:border-slate-400 px-3.5 py-1.5 rounded-full transition-colors cursor-pointer"
+                    className="text-[10px] font-bold font-inter text-slate-600 hover:text-slate-900 uppercase tracking-wider border border-slate-300 hover:border-slate-400 px-3.5 py-1.5 rounded-full transition-all cursor-pointer active:scale-95"
                   >
                     Quick Enroll
                   </button>
@@ -133,6 +135,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
             </div>
           ))}
         </div>
+
 
       </div>
     </section>

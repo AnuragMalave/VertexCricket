@@ -107,7 +107,7 @@ export const TestimonialsSection: React.FC = () => {
       className="py-16 lg:py-16 bg-white text-slate-800 relative overflow-hidden border-t border-slate-100"
     >
       <div
-        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out ${
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 apple-reveal ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}
       >
@@ -177,7 +177,7 @@ export const TestimonialsSection: React.FC = () => {
               <div
                 key={`${item.id}-${idx}`}
                 style={{ animationDelay: `${idx * 40}ms` }}
-                className={`rounded-2xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 ${
+                className={`rounded-2xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 apple-card-interactive ${
                   isMiddle
                     ? 'bg-[#F0F5F8] shadow-sm'
                     : 'bg-[#F8FAFC] hover:bg-[#F0F5F8]/60'
@@ -239,3 +239,4 @@ export const TestimonialsSection: React.FC = () => {
 };
 
 export default TestimonialsSection;
+

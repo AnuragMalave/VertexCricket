@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TrainedPlayersIcon, TrophyIcon, CoachBadgeIcon, DedicationIcon } from './CricketIcons';
 import impactImg from '../assets/Impact Section image.png';
 import { useScrollReveal } from '../utils/useScrollReveal';
+
+// Helper component for smooth number count up animation
+const CountUp: React.FC<{ end: number; suffix?: string; isVisible: boolean }> = ({ end, suffix = '', isVisible }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    let startTimestamp: number | null = null;
+    const duration = 2500; // 2.5 seconds
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      // Apple ease-out cubic curve
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(easedProgress * end));
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  }, [end, isVisible]);
+
+  return <>{count}{suffix}</>;
+};
 
 export const ImpactSection: React.FC = () => {
   const { ref, isVisible } = useScrollReveal<HTMLElement>();
@@ -9,25 +36,33 @@ export const ImpactSection: React.FC = () => {
   const stats = [
     {
       id: 1,
-      number: '500+',
+      targetNum: 500,
+      suffix: '+',
+      textFallback: null,
       label: 'TRAINED PLAYERS',
       icon: <TrainedPlayersIcon className="w-8 h-8 text-slate-700" />,
     },
     {
       id: 2,
-      number: '50+',
+      targetNum: 50,
+      suffix: '+',
+      textFallback: null,
       label: 'TOURNAMENTS WON',
       icon: <TrophyIcon className="w-8 h-8 text-slate-700" />,
     },
     {
       id: 3,
-      number: 'LEVEL 1',
+      targetNum: null,
+      suffix: '',
+      textFallback: 'LEVEL 1',
       label: 'BCCI CERTIFIED COACH',
       icon: <CoachBadgeIcon className="w-8 h-8 text-slate-700" />,
     },
     {
       id: 4,
-      number: '100%',
+      targetNum: 100,
+      suffix: '%',
+      textFallback: null,
       label: 'DEDICATION',
       icon: <DedicationIcon className="w-8 h-8 text-slate-700" />,
     },
@@ -38,16 +73,16 @@ export const ImpactSection: React.FC = () => {
       {/* Top Right Grid Dot Background Accent */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-grid-dots opacity-40 pointer-events-none" />
 
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 apple-reveal ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left Column: Equipment Visual */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
+            <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group apple-card-interactive">
               <img
                 src={impactImg}
                 alt="Vertex Cricket Equipment"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B2D]/40 via-transparent to-transparent pointer-events-none" />
             </div>
@@ -69,14 +104,19 @@ export const ImpactSection: React.FC = () => {
               {stats.map((item, idx) => (
                 <div
                   key={item.id}
-                  className={`flex flex-col items-center sm:items-center text-center space-y-2 py-2 ${idx !== stats.length - 1 ? 'sm:border-r border-slate-200/80 pr-2' : ''
+                  style={{ transitionDelay: `${idx * 100}ms` }}
+                  className={`flex flex-col items-center sm:items-center text-center space-y-2 py-2 apple-card-interactive p-2 rounded-xl hover:bg-white/60 ${idx !== stats.length - 1 ? 'sm:border-r border-slate-200/80 pr-2' : ''
                     }`}
                 >
-                  <div className="mb-1 text-slate-700 transition-transform hover:scale-110">
+                  <div className="mb-1 text-slate-700 transition-transform duration-300 hover:scale-110">
                     {item.icon}
                   </div>
                   <span className="text-3xl sm:text-4xl font-bold font-display text-[#DC2626] tracking-tight">
-                    {item.number}
+                    {item.targetNum !== null ? (
+                      <CountUp end={item.targetNum} suffix={item.suffix} isVisible={isVisible} />
+                    ) : (
+                      item.textFallback
+                    )}
                   </span>
                   <span className="text-[11px] sm:text-xs font-semibold font-inter text-slate-700 tracking-wider uppercase">
                     {item.label}
@@ -91,3 +131,4 @@ export const ImpactSection: React.FC = () => {
     </section>
   );
 };
+

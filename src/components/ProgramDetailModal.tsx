@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Check, Clock, ShieldCheck, Users, Calendar, ArrowRight } from 'lucide-react';
+import { X, Check, Clock, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export interface ProgramData {
   id: string;
@@ -19,16 +19,15 @@ export const PROGRAM_DETAILS: Record<string, ProgramData> = {
     id: 'beginner',
     title: 'FOUNDATION PROGRAM',
     ageGroup: 'Ages 6 - 12 Years',
-    tagline: 'Perfect for new players to learn basics, techniques and game understanding.',
-    description: 'Designed specifically for young aspirants starting their cricket journey. We focus on establishing solid fundamental mechanics for grip, stance, swing, bowling action, catch technique, and field agility while fostering maximum joy for the game.',
+    tagline: 'Start Strong. Learn Right.',
+    description: 'For young players beginning their cricket journey.',
     image: '/images/program-beginner.jpg',
     highlights: [
-      'Basic Batting Mechanics & Stance Alignment',
-      'Fundamentals of Bowling Action & Arm Path',
-      'Soft-ball Hand-Eye Coordination Drills',
-      'Basic Fielding & Catching Techniques',
-      'Fun Mini-Matches & Rules Orientation',
-      // 'Weekly Progress Card for Parents'
+      'Cricket fundamentals',
+      'Basic batting & bowling',
+      'Fielding skills',
+      'Coordination',
+      'Fun-based learning'
     ],
     schedule: 'Mon - Fri : 5:00 PM – 7:00 PM',
     ratio: '1 Coach for every 6 Students',
@@ -38,16 +37,15 @@ export const PROGRAM_DETAILS: Record<string, ProgramData> = {
     id: 'intermediate',
     title: 'DEVELOPMENT PROGRAM',
     ageGroup: 'Ages 12 - 16 Years',
-    tagline: 'Enhance your skills, game sense and performance with advanced training.',
-    description: 'Targeted at club players and school team members looking to refine shot selection, spin vs pace execution, tactical awareness, pitch reading, match simulations, and specialized physical conditioning.',
+    tagline: 'Learn. Improve. Compete.',
+    description: 'For players with basic cricket experience.',
     image: '/images/program-intermediate.jpg',
     highlights: [
-      'Advanced Shot Building (Drive, Sweep, Pull, Loft)',
-      'Pace & Spin Bowling Variations & Control',
-      'Live Net Practice with Bowler Speed Radar',
-      'Match Simulation Scenarios under Pressure',
-      'Fitness, Core Strength & Speed Conditioning',
-      'High-Speed Video Stroke Analysis'
+      'Advanced skills',
+      'Technique development',
+      'Game awareness',
+      'Match practice',
+      'Fitness development'
     ],
     schedule: 'Mon - Fri : 5:00 PM – 7:00 PM',
     ratio: '1 Coach for every 5 Students',
@@ -57,16 +55,15 @@ export const PROGRAM_DETAILS: Record<string, ProgramData> = {
     id: 'advanced',
     title: 'HIGH PERFORMANCE PROGRAM',
     ageGroup: 'Ages 15+ / Competitive',
-    tagline: 'High-performance training for competitions and professional cricket.',
-    description: 'An elite high-performance pathway for state, district, and professional league aspirants. Includes personalized bi-weekly match analytics, mental toughness coaching, custom nutrition plans, and exposure to top-tier tournaments.',
+    tagline: 'For Players Who Want To Compete At The Next Level',
+    description: 'For players who want to compete at the next level.',
     image: '/images/program-advanced.jpg',
     highlights: [
-      'Biomechanical Pitch Video Analysis',
-      'State-Level Tournament Placement & Trial Prep',
-      'Mental Conditioning & High-Pressure Scenarios',
-      'Dedicated Fast Bowling / Spin Bowling Lab',
-      '1-on-1 Mentorship by Experienced Coaches',
-      'Customized Sports Diet & Recovery Protocol'
+      'Individual skill development',
+      'Performance analysis',
+      'Match preparation',
+      'Advanced fitness',
+      'Competitive match exposure'
     ],
     schedule: "Mon - Fri : 5:00 PM – 7:00 PM\nSat - Sun : On Demand",
     ratio: '1-on-1 and 1 Coach for every 3 Students',
@@ -89,7 +86,7 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
   const program = PROGRAM_DETAILS[programKey];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn" onClick={onClose}>
       <div
         className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden my-6 max-h-[90vh] flex flex-col animate-scaleUp"
         onClick={(e) => e.stopPropagation()}
@@ -99,13 +96,13 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
           <img
             src={program.image}
             alt={program.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B2D] via-[#0B1B2D]/60 to-transparent" />
 
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 hover:bg-black/70 text-white transition-colors"
+            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 hover:bg-black/70 text-white transition-all active:scale-90 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>

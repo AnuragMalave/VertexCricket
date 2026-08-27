@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, Play, Users, ShieldCheck, Trophy } from 'lucide-react';
 import heroBg from '../assets/herobackground.svg';
 import mobileHeroBg from '../assets/mobile hero image.svg';
+import { useScrollReveal } from '../utils/useScrollReveal';
 
 interface HeroProps {
   onOpenEnroll: () => void;
@@ -9,8 +10,10 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenEnroll, onOpenVideo }) => {
+  const { ref, isVisible } = useScrollReveal<HTMLElement>({ threshold: 0.1 });
+
   return (
-    <section id="home" data-has-cta="true" className="relative mt-16 sm:mt-20 lg:mt-24 pt-0 md:pt-8 lg:pt-16 pb-16 lg:pb-24 overflow-hidden bg-white flex flex-col justify-center">
+    <section ref={ref} id="home" data-has-cta="true" className="relative mt-16 sm:mt-20 lg:mt-24 pt-0 md:pt-8 lg:pt-16 pb-16 lg:pb-24 overflow-hidden bg-white flex flex-col justify-center">
 
       {/* Mobile-Only Top Hero Image (Stacked above text under navbar) */}
       <div className="block md:hidden relative w-full h-[320px] sm:h-[400px] overflow-hidden bg-white">
@@ -38,31 +41,33 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnroll, onOpenVideo }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
           {/* Text Content */}
-          <div className="lg:col-span-6 space-y-4 sm:space-y-5 pt-0 md:pt-4 text-left">
+          <div className={`lg:col-span-6 space-y-4 sm:space-y-5 pt-0 md:pt-4 text-left apple-reveal ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}>
 
             {/* Tagline Badge */}
-            <div>
+            <div className="transition-all duration-500 delay-100">
               <span className="text-amber-600 font-semibold text-xs tracking-[0.2em] uppercase font-inter block mb-2 sm:mb-3">
                 SHAPE TALENT. BUILD CHAMPIONS.
               </span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display uppercase leading-none">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-display uppercase leading-none transition-all duration-500 delay-200">
               <span className="block text-[#053E58]">TRAIN HARD.</span>
               <span className="block text-[#DC2626]">PLAY FEARLESS.</span>
             </h1>
 
             {/* Subtext Body */}
-            <p className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed font-inter font-normal pt-1">
+            <p className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed font-inter font-normal pt-1 transition-all duration-500 delay-300">
               Vertex Cricket Academy is where passion meets professional training. Join us and elevate your game to the next level.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-row items-center gap-3 sm:gap-4 pt-2 sm:pt-3">
+            <div className="flex flex-row items-center gap-3 sm:gap-4 pt-2 sm:pt-3 transition-all duration-500 delay-400">
               <button
                 onClick={onOpenEnroll}
-                className="btn-navy text-white px-5 sm:px-7 py-3.5 rounded-md font-semibold font-inter text-xs sm:text-sm tracking-wider uppercase flex items-center gap-2 sm:gap-3 shadow-lg group cursor-pointer"
+                className="btn-navy text-white px-5 sm:px-7 py-3.5 rounded-md font-semibold font-inter text-xs sm:text-sm tracking-wider uppercase flex items-center gap-2 sm:gap-3 shadow-lg group cursor-pointer active:scale-95 transition-transform"
               >
                 <span>ENROLL NOW</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -70,9 +75,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnroll, onOpenVideo }) => {
 
               <button
                 onClick={onOpenVideo}
-                className="bg-slate-100/90 hover:bg-slate-200 border border-slate-300 text-slate-800 px-4 sm:px-6 py-3.5 rounded-md font-semibold font-inter text-xs sm:text-sm tracking-wider uppercase flex items-center gap-2 transition-all cursor-pointer shadow-sm hover:shadow"
+                className="bg-slate-100/90 hover:bg-slate-200 border border-slate-300 text-slate-800 px-4 sm:px-6 py-3.5 rounded-md font-semibold font-inter text-xs sm:text-sm tracking-wider uppercase flex items-center gap-2 transition-all cursor-pointer shadow-sm hover:shadow active:scale-95"
               >
-                <div className="w-5 h-5 rounded-full bg-slate-300 text-slate-800 flex items-center justify-center flex-shrink-0">
+                <div className="w-5 h-5 rounded-full bg-slate-300 text-slate-800 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110">
                   <Play className="w-2.5 h-2.5 fill-slate-800 ml-0.5" />
                 </div>
                 <span>WATCH VIDEO</span>
@@ -80,10 +85,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnroll, onOpenVideo }) => {
             </div>
 
             {/* Trust Indicators 3-Column Row */}
-            <div className="pt-6 grid grid-cols-3 divide-x divide-slate-200/90 items-start text-left gap-1 sm:gap-2">
+            <div className="pt-6 grid grid-cols-3 divide-x divide-slate-200/90 items-start text-left gap-1 sm:gap-2 transition-all duration-500 delay-500">
               {/* Item 1: Expert Coaches */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-2.5 sm:pr-4">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-red-100/80 flex items-center justify-center flex-shrink-0">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-2.5 sm:pr-4 group">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-red-100/80 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110">
                   <Users className="w-4 h-4 text-[#DC2626]" />
                 </div>
                 <div className="text-left">
@@ -97,8 +102,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnroll, onOpenVideo }) => {
               </div>
 
               {/* Item 2: World-Class Facilities */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-2.5 pl-2 sm:px-4">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-blue-100/80 flex items-center justify-center flex-shrink-0">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-2.5 pl-2 sm:px-4 group">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-blue-100/80 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110">
                   <ShieldCheck className="w-4 h-4 text-blue-600" />
                 </div>
                 <div className="text-left">
@@ -112,8 +117,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnroll, onOpenVideo }) => {
               </div>
 
               {/* Item 3: Proven Results */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-2.5 pl-2 sm:pl-4">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-emerald-100/80 flex items-center justify-center flex-shrink-0">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-2.5 pl-2 sm:pl-4 group">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-emerald-100/80 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110">
                   <Trophy className="w-4 h-4 text-emerald-600" />
                 </div>
                 <div className="text-left">
