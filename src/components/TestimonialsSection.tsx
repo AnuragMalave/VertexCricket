@@ -24,42 +24,42 @@ export const TestimonialsSection: React.FC = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      name: 'Rakesh Sharma',
-      role: 'Parent of U-14 Player',
+      name: 'Shalini Kumari',
+      role: 'Parent',
       quote:
-        'Vertex Cricket Academy has made it possible for my son to stay on top of his technique and make real progress quickly and easily under Coach Sanjay Darwatkar.',
+        'Skilled coach who not only guide good cricket skills but also focuses on players physical fitness and diet routine. My child have improved his skills and enjoys regular matches session. Sanjay sir encourages and boosts sportsmanship quality among the players patiently and calmly.',
       rating: 5,
     },
     {
       id: 2,
-      name: 'Aarav Patel',
-      role: 'Batting Program Student',
+      name: 'Sreesha Gupta',
+      role: 'Guardian',
       quote:
-        "I've been training at Vertex for a year now and it's made managing my match fitness and stroke consistency so much easier.",
+        'My younger brother is been trained by Sanjay sir since he was 6 years old. A great coach and a great place to learn, grow and build confidence.',
       rating: 5,
     },
     {
       id: 3,
-      name: 'Priya & Vikram Nair',
-      role: 'Parents of Fast Bowling Trainee',
+      name: 'Sunny Erabattin',
+      role: 'Parent',
       quote:
-        'Vertex stands out as the most user-friendly, professional, and effective cricket academy solution I have ever experienced for my child.',
+        'The ground has been renovated and now children will enjoy playing more and will be able to learn more easily. Coach Sanjay Sir pays so much attention to each kid personally, Motivates them, Guide them for improvement',
       rating: 5,
     },
     {
       id: 4,
-      name: 'Aditya Deshmukh',
-      role: 'High Performance Student',
+      name: 'Samyak Shah',
+      role: 'Student (6+ Years)',
       quote:
-        'The video analysis lab and individual attention from the coaching staff boosted my tactical match awareness completely before district trials.',
+        'I have been learning under Sanjay Darwatkar sir for last 6 to 7 years now. I have great experiences of learning from him.',
       rating: 5,
     },
     {
       id: 5,
-      name: 'Sunil Kulkarni',
-      role: 'Parent of U-12 Student',
+      name: 'Aditya Shelke',
+      role: 'Academy Trainee',
       quote:
-        'Top class facilities with 8 international-standard turf wickets and automated net sessions. The best cricket training academy in Wagholi.',
+        'Such a brilliant place for cricket top level coaching',
       rating: 5,
     },
   ];

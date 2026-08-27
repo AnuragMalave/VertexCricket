@@ -3,7 +3,7 @@ import { NetFacilityIcon } from './CricketIcons';
 import { ShieldCheck, CheckCircle2 } from 'lucide-react';
 import internationalStandersImg from '../assets/international standers.jpg';
 import astroTurfImg from '../assets/Astro turf.jpg';
-import videoAnalysisClip from '../assets/MicrosoftTeams-video.mp4';
+import biomechanicsLabImg from '../assets/biomechanics_lab.jpg';
 import { useScrollReveal } from '../utils/useScrollReveal';
 
 export const FacilitiesSection: React.FC = () => {
@@ -32,7 +32,7 @@ export const FacilitiesSection: React.FC = () => {
       title: 'Biomechanics Video Analysis Lab',
       subtitle: '240fps High-Speed Multi-Angle Cameras',
       desc: 'State-of-the-art visual recording studio with Dartfish biomechanical feedback software for pinpointing release angles & footwork.',
-      video: videoAnalysisClip,
+      image: biomechanicsLabImg,
       specs: ['3D Motion Capture', 'Instant Dugout Display Sync', 'Release Point Tracking', 'Biweekly Player Reports'],
     },
     {
@@ -114,29 +114,16 @@ export const FacilitiesSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Image/Video Feature */}
+          {/* Right Image Feature */}
           <div className="lg:col-span-6 flex items-center justify-center">
-            {'video' in current && current.video ? (
-              <div className="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group bg-black w-full flex items-center justify-center">
-                <video
-                  src={current.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-auto max-h-[420px] object-contain rounded-2xl"
-                />
-              </div>
-            ) : (
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-slate-700/80 shadow-2xl group w-full">
-                <img
-                  src={'image' in current ? current.image : ''}
-                  alt={current.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-              </div>
-            )}
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-slate-700/80 shadow-2xl group w-full">
+              <img
+                src={current.image}
+                alt={current.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            </div>
           </div>
 
         </div>
